@@ -42,7 +42,7 @@ public class MasterBook {
 				viewCountOfContactsFromSpecificCityName();
 				break;
 			case 6:
-				sortContactByName();
+				sortContact();
 				break;
 			case 7: 
 				quite = true;
@@ -59,7 +59,7 @@ public class MasterBook {
 		System.out.println("\t 3 to search contact via city name : ");
 		System.out.println("\t 4 to search contact via state name : ");
 		System.out.println("\t 5 to view how many contacts are from specific city : ");
-		System.out.println("\t 6 to sort contacts alphabetically by their name : ");
+		System.out.println("\t 6 to sort contacts : ");
 		System.out.println("\t 7 to Quite : ");
 	}
 
@@ -130,9 +130,37 @@ public class MasterBook {
 		System.out.println("Total contacts from " + stateName + " state is " + totalCount);
 	}
 	
-	public void sortContactByName() {
-		for(Map.Entry<String, AddressBook> entry : masterBook.entrySet()) {
-			entry.getValue().sortContactByPersonName();
+	public void sortContact() {
+		
+		System.out.println("Press 1 If you want to sort the contact by their Name : ");
+		System.out.println("Press 2 If you want to sort the contact by their City : ");
+		System.out.println("Press 3 If you want to sort the contact by their State : ");
+		System.out.println("Press 4 If you want to sort the contact by Zip Code : ");
+		int choice = scanner.nextInt();
+		scanner.nextLine();
+		switch(choice){
+		case 1: 
+			for(Map.Entry<String, AddressBook> entry : masterBook.entrySet()) {
+				entry.getValue().sortContactByPersonName();
+			}
+			break;
+		case 2: 
+			for(Map.Entry<String, AddressBook> entry : masterBook.entrySet()) {
+				entry.getValue().sortContactByPersonCity();
+			}
+			break;
+		case 3: 
+			for(Map.Entry<String, AddressBook> entry : masterBook.entrySet()) {
+				entry.getValue().sortContactByPersonState();
+			}
+			break;
+		case 4:
+			for(Map.Entry<String, AddressBook> entry : masterBook.entrySet()) {
+				entry.getValue().sortContactByPersonZipCode();
+			}
+			default:
+				mainMenuMasterBook();
 		}
+		
 	}
 }
