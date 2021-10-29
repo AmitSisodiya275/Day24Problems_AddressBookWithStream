@@ -42,6 +42,9 @@ public class MasterBook {
 				viewCountOfContactsFromSpecificCityName();
 				break;
 			case 6:
+				sortContactByName();
+				break;
+			case 7: 
 				quite = true;
 			}
 		}
@@ -56,6 +59,8 @@ public class MasterBook {
 		System.out.println("\t 3 to search contact via city name : ");
 		System.out.println("\t 4 to search contact via state name : ");
 		System.out.println("\t 5 to view how many contacts are from specific city : ");
+		System.out.println("\t 6 to sort contacts alphabetically by their name : ");
+		System.out.println("\t 7 to Quite : ");
 	}
 
 	public void addAddressBook() {
@@ -123,6 +128,11 @@ public class MasterBook {
 			totalCount += count;
 		}
 		System.out.println("Total contacts from " + stateName + " state is " + totalCount);
+	}
 	
+	public void sortContactByName() {
+		for(Map.Entry<String, AddressBook> entry : masterBook.entrySet()) {
+			entry.getValue().sortContactByPersonName();
+		}
 	}
 }
